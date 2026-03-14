@@ -36,7 +36,7 @@ class _MyCalculatorState extends State<MyCalculator> {
   
   // Stores the calculation result
   var output = '';
-
+  
   void _onButtonClicked(String value) {
     setState(() {
       if (value == "AC") {
@@ -67,11 +67,23 @@ class _MyCalculatorState extends State<MyCalculator> {
     });
   }
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Column(
-    ),
-  );
-}
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Text(input, style: TextStyle(fontSize: 24)),
+          Text(output, style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold)),
+          ElevatedButton(
+            onPressed: () => _onButtonClicked("1"), // This "references" the function
+            child: Text("1"),
+          ),
+          ElevatedButton(
+            onPressed: () => _onButtonClicked("="),
+            child: Text("="),
+          ),
+        ],
+      ),
+    );
+  }
 }
