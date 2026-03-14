@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+// Variables to hold numbers and operation strings
+double num1 = 0.0;
+double num2 = 0.0;
+
+// Stores the user input
+var input = ''; 
+
+// Stores the calculation result
+var output = '';
+
 void main() {
   runApp(const MyApp());
 }
