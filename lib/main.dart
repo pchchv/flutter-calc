@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: MyCalculator(),
+      home: const MyCalculator(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -27,10 +27,9 @@ class MyCalculator extends StatefulWidget {
 }
 
 class _MyCalculatorState extends State<MyCalculator> {
-  String input = '';
-  String output = '';
+  var input = '';
+  var output = '';
 
-  // Logic to handle button presses
   void _onButtonClicked(String value) {
     setState(() {
       if (value == "AC") {
@@ -73,7 +72,7 @@ class _MyCalculatorState extends State<MyCalculator> {
               borderRadius: BorderRadius.circular(5),
             ),
           ),
-          onPressed: () => _onButtonClicked(text),
+          onPressed: text.isEmpty ? null : () => _onButtonClicked(text),
           child: Text(
             text,
             style: TextStyle(
@@ -90,60 +89,71 @@ class _MyCalculatorState extends State<MyCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: Column(
         children: [
           Expanded(
             child: Container(
-              alignment: Alignment.bottomRight,
-              padding: const EdgeInsets.all(20),
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(input, style: const TextStyle(color: Colors.white, fontSize: 24)),
+                  Text(
+                    input,
+                    style: const TextStyle(fontSize: 48, color: Colors.white),
+                  ),
                   const SizedBox(height: 10),
-                  Text(output, style: const TextStyle(color: Colors.white, fontSize: 48, fontWeight: FontWeight.bold)),
+                  Text(
+                    output,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white.withValues(alpha: 0.7),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
           ),
           Row(
             children: [
-              button("AC", Colors.grey, Colors.black),
-              button("A", Colors.grey, Colors.black),
-              button("/", Colors.orange, Colors.white),
+              button("AC", Colors.black, Colors.orangeAccent),
+              button("A", Colors.black, Colors.orangeAccent),
+              button("", Colors.transparent, Colors.white),
+              button("/", Colors.black, Colors.orangeAccent),
             ],
           ),
           Row(
             children: [
-              button("7", Colors.white10, Colors.white),
-              button("8", Colors.white10, Colors.white),
-              button("9", Colors.white10, Colors.white),
-              button("*", Colors.orange, Colors.white),
+              button("7", Colors.black, Colors.white),
+              button("8", Colors.black, Colors.white),
+              button("9", Colors.black, Colors.white),
+              button("*", Colors.black, Colors.orangeAccent),
             ],
           ),
           Row(
             children: [
-              button("4", Colors.white10, Colors.white),
-              button("5", Colors.white10, Colors.white),
-              button("6", Colors.white10, Colors.white),
-              button("-", Colors.orange, Colors.white),
+              button("4", Colors.black, Colors.white),
+              button("5", Colors.black, Colors.white),
+              button("6", Colors.black, Colors.white),
+              button("-", Colors.black, Colors.orangeAccent),
             ],
           ),
           Row(
             children: [
-              button("1", Colors.white10, Colors.white),
-              button("2", Colors.white10, Colors.white),
-              button("3", Colors.white10, Colors.white),
-              button("+", Colors.orange, Colors.white),
+              button("1", Colors.black, Colors.white),
+              button("2", Colors.black, Colors.white),
+              button("3", Colors.black, Colors.white),
+              button("+", Colors.black, Colors.orangeAccent),
             ],
           ),
           Row(
             children: [
-              button("0", Colors.white10, Colors.white),
-              button(".", Colors.white10, Colors.white),
-              button("=", Colors.orange, Colors.white),
+              button("%", Colors.black, Colors.orangeAccent),
+              button("0", Colors.black, Colors.white),
+              button(".", Colors.black, Colors.white),
+              button("=", Colors.orangeAccent, Colors.white),
             ],
           ),
         ],
