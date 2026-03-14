@@ -27,16 +27,10 @@ class MyCalculator extends StatefulWidget {
 }
 
 class _MyCalculatorState extends State<MyCalculator> {
-  // Variables to hold numbers and operation strings
-  double num1 = 0.0;
-  double num2 = 0.0;
-  
-  // Stores the user input
-  var input = '';
-  
-  // Stores the calculation result
-  var output = '';
-  
+  String input = '';
+  String output = '';
+
+  // Logic to handle button presses
   void _onButtonClicked(String value) {
     setState(() {
       if (value == "AC") {
@@ -96,17 +90,61 @@ class _MyCalculatorState extends State<MyCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
         children: [
-          Text(input, style: TextStyle(fontSize: 24)),
-          Text(output, style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold)),
-          ElevatedButton(
-            onPressed: () => _onButtonClicked("1"), // This "references" the function
-            child: Text("1"),
+          Expanded(
+            child: Container(
+              alignment: Alignment.bottomRight,
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(input, style: const TextStyle(color: Colors.white, fontSize: 24)),
+                  const SizedBox(height: 10),
+                  Text(output, style: const TextStyle(color: Colors.white, fontSize: 48, fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
           ),
-          ElevatedButton(
-            onPressed: () => _onButtonClicked("="),
-            child: Text("="),
+          Row(
+            children: [
+              button("AC", Colors.grey, Colors.black),
+              button("A", Colors.grey, Colors.black),
+              button("/", Colors.orange, Colors.white),
+            ],
+          ),
+          Row(
+            children: [
+              button("7", Colors.white10, Colors.white),
+              button("8", Colors.white10, Colors.white),
+              button("9", Colors.white10, Colors.white),
+              button("*", Colors.orange, Colors.white),
+            ],
+          ),
+          Row(
+            children: [
+              button("4", Colors.white10, Colors.white),
+              button("5", Colors.white10, Colors.white),
+              button("6", Colors.white10, Colors.white),
+              button("-", Colors.orange, Colors.white),
+            ],
+          ),
+          Row(
+            children: [
+              button("1", Colors.white10, Colors.white),
+              button("2", Colors.white10, Colors.white),
+              button("3", Colors.white10, Colors.white),
+              button("+", Colors.orange, Colors.white),
+            ],
+          ),
+          Row(
+            children: [
+              button("0", Colors.white10, Colors.white),
+              button(".", Colors.white10, Colors.white),
+              button("=", Colors.orange, Colors.white),
+            ],
           ),
         ],
       ),
