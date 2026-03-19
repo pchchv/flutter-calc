@@ -32,7 +32,34 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
-      body: Column(children: []),
+      body: Column(children: [
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const SizedBox(
+                height: 50,
+              ),
+              Container(
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  userQuestion,
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(20),
+                alignment: Alignment.centerRight,
+                child: Text(
+                  userAnswer,
+                  style: const TextStyle(fontSize: 20),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ]),
     );
   }
 
@@ -42,7 +69,7 @@ class _HomePageState extends State<HomePage> {
     }
     return false;
   }
-  
+
   void equalPressed() {
     String finalQuestion = userQuestion;
     finalQuestion = finalQuestion.replaceAll('x', '*');
