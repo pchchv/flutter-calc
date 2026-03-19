@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,6 +25,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var userQuestion = '';
+  var userAnswer = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,5 +41,19 @@ class _HomePageState extends State<HomePage> {
       return true;
     }
     return false;
+  }
+  
+  void equalPressed() {
+    String finalQuestion = userQuestion;
+    finalQuestion = finalQuestion.replaceAll('x', '*');
+    
+    ExpressionParser p = GrammarParser();
+    Expression exp = p.parse(finalQuestion);
+    
+    ContextModel cm = ContextModel();
+    RealEvaluator evaluator = RealEvaluator(cm);
+    num eval = evaluator.evaluate(exp);
+    
+    userAnswer = eval.toString();
   }
 }
