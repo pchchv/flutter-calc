@@ -3,11 +3,11 @@ import 'package:flutter_calc/buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CalcApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CalcApp extends StatelessWidget {
+  const CalcApp({super.key});
 
   @override
   Widget build(BuildContext context) {
