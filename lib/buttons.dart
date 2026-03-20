@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget {
+class CalcButton extends StatelessWidget {
   final Color? color;
   final Color? textColor;
   final String buttonText;
   final VoidCallback? buttonTapped;
 
-  const MyButton({
+  const CalcButton({
     super.key,
     this.color,
     this.textColor,
