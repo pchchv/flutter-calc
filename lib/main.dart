@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   var userQuestion = '';
   var userAnswer = '';
 
-  final myTextStyle = TextStyle(fontSize: 30, color: Colors.deepPurple[900]);
   final List<String> buttons = [
     'C',
     'DEL',
@@ -94,7 +93,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (BuildContext context, int index) {
                 // Clear Button
                 if (index == 0) {
-                  return MyButton(
+                  return CalcButton(
                     buttonTapped: () {
                       setState(() {
                         userQuestion = '';
@@ -106,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                   );
                   // Delete Button
                 } else if (index == 1) {
-                  return MyButton(
+                  return CalcButton(
                     buttonTapped: () {
                       setState(() {
                         userQuestion =
@@ -120,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                 }
                 // Equal Button
                 else if (index == buttons.length - 1) {
-                  return MyButton(
+                  return CalcButton(
                     buttonTapped: () {
                       setState(() {
                         equalPressed();
@@ -132,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                   );
                   // Rest of the button
                 } else {
-                  return MyButton(
+                  return CalcButton(
                     buttonTapped: () {
                       setState(() {
                         userQuestion += buttons[index];
